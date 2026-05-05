@@ -11,7 +11,7 @@ const addTask = (taskList, newTask) => {
     return [...taskList, newTask]
 }
 
-console.log(addTask(tasksOfTheDay,{title: "J'ai ajouté une tâche",done :true}));
+console.log(addTask(tasksOfTheDay, { title: "J'ai ajouté une tâche", done: true }));
 
 
 // fonction pour supprimer une tâche dans une liste : 
@@ -24,24 +24,35 @@ console.log(removeTask(tasksOfTheDay, "Nettoyer la maison"));
 
 // fonction pour inversé l'état d'une tâche :
 const toggleTaskStatus = (task) => {
-    for (const tasks of task) {
-        // je vérifie que je récupère bien l'état de chaque tâche
-        console.log(tasks.done);
-        // j'inverse l'état à faux si c'est initialement à true et inversement
-        tasks.done ? tasks.done = false : tasks.done = true;
-    }
+    /*     for (const tasks of task) {
+            // je vérifie que je récupère bien l'état de chaque tâche
+            console.log(tasks.done);
+            // j'inverse l'état à faux si c'est initialement à true et inversement
+        } */
+    task.done ? task.done = false : task.done = true;
     // je retourne le tableau des taches avec les états inversés
     return console.log(task);
 }
 
-toggleTaskStatus(tasksOfTheDay)
+toggleTaskStatus(tasksOfTheDay[1])
 
 
 // fonction pour montrer une liste de taches, une liste de tâches effectuées ou un liste de tâches non effectué :
-const showTaskStatus= (taskList, status)=> {
+const showTaskStatus = (taskList, status) => {
 
-    return console.log(taskList, status == true ? taskList.filter(status => status.done !== false) : taskList.filter(status => status.done !== true));
+    if (status === "ALL") {
+        console.log(taskList)
 
+    } else if (status === "DONE") {
+        console.log(taskList.filter(task => task.done === true))
+
+    } else if (status === "TODO") {
+        console.log(taskList.filter(task => task.done === false))
+    }
 }
 
-showTaskStatus(tasksOfTheDay, true);
+
+
+showTaskStatus(tasksOfTheDay,"ALL");
+showTaskStatus(tasksOfTheDay,"DONE");
+showTaskStatus(tasksOfTheDay,"TODO");
