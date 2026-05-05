@@ -11,15 +11,10 @@ const addTask = (taskList, newTask) => {
     return [...taskList, newTask]
 }
 
-// appel de la fonction pour ajouter une nouvelle tâche:
-const newTaskOfDay = addTask(tasksOfTheDay,
-    { title: "test", done: false }
-)
-
-console.log(newTaskOfDay);
+console.log(addTask(tasksOfTheDay,{title: "J'ai ajouté une tâche",done :true}));
 
 
-// fonction pour supprimer une tache dans une liste : 
+// fonction pour supprimer une tâche dans une liste : 
 const removeTask = (taskList, title) => {
     return taskList.filter(task => task.title !== title)
 
@@ -45,7 +40,7 @@ toggleTaskStatus(tasksOfTheDay)
 // fonction pour montrer une liste de taches, une liste de tâches effectuées ou un liste de tâches non effectué :
 const showTaskStatus= (taskList, status)=> {
 
-    return console.log(taskList, status == false ? taskList.filter(status => status.done !== false) : taskList.filter(status => status.done !== true));
+    return console.log(taskList, status == true ? taskList.filter(status => status.done !== false) : taskList.filter(status => status.done !== true));
 
 }
 
